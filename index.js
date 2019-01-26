@@ -39,10 +39,10 @@ bot.on('ready', () => {
 bot.on("guildMemberAdd", function (member) {
     if (member.guild.id == 465707591910162432) {
         member.send("Hello! Welcome to sylveon land, here we meme the crap out of our existence! Read #welcome-rules before typing away!");
-        var channel = bot.channels.get('500450322347589632')
+        var channel = bot.channels.get('538814550506733578')
         var guild = 465707591910162432
-        var rules = bot.channels.get('473670157948944384')
-        var accept = bot.channels.get('511355112652800010')
+        var rules = bot.channels.get('538813283139059732')
+        var accept = bot.channels.get('538818808807292940')
         var thumbnail = member.id.avatarURL
         let welcome = new discord.RichEmbed()
             .setTitle("Welcome!")
