@@ -93,7 +93,7 @@ bot.on('message', function (message) {
         message.channel.send("You don't have permissions to use this command!");
         return;
     }
-    message.channel.send('Resetting...')
+    message.channel.send('Shutting down...')
     .then(msg => bot.destroy())
   }
     if (message.content.toLowerCase() == "accept") {
