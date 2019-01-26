@@ -80,9 +80,21 @@ bot.on("guildMemberRemove", function (member) {
 bot.on('message', function (message) {
 
   if(message.content == "reboot"){
+    if (!message.member.hasPermission("ADMINISTRATOR")) {
+        message.channel.send("You don't have permissions to use this command!");
+        return;
+    }
     message.channel.send('Resetting...')
     .then(msg => bot.destroy())
     .then(() => bot.login(process.env.TOKEN));
+  }
+  if(message.content == "shutdown"){
+    if (!message.member.hasPermission("ADMINISTRATOR")) {
+        message.channel.send("You don't have permissions to use this command!");
+        return;
+    }
+    message.channel.send('Resetting...')
+    .then(msg => bot.destroy())
   }
     if (message.content.toLowerCase() == "accept") {
         message.reply('You have been accepted to the Sylveon Squad!')
