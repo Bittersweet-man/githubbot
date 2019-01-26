@@ -28,7 +28,7 @@ var playQueue = [];
 
 bot.on('ready', () => {
     console.log("Ready");
-    const channel = bot.channels.get('500380461391020042')
+    const channel = bot.channels.get('538707114781179904')
     channel.send("I am online!")
     bot.user.setActivity("Type ?help", {
         type: 'PLAYING'
