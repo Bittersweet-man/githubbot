@@ -64,7 +64,7 @@ bot.on("guildMemberAdd", function (member) {
 
 bot.on("guildMemberRemove", function (member) {
         if (member.guild.id == 465707591910162432) {
-            var channel = bot.channels.get('500450322347589632')
+            var channel = bot.channels.get('538814550506733578')
             var guild = 465707591910162432
             channel.send('**I\'m sorry that ' + member.displayName + " has left us. oof.**")
         }
