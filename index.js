@@ -86,7 +86,8 @@ bot.on('message', function (message) {
   }
     if (message.content.toLowerCase() == "accept") {
         message.reply('You have been accepted to the Sylveon Squad!')
-        message.member.addRole('473668077754777602')
+        var role = message.guild.channels.find(role => role.name === "newcomer")
+        message.member.addRole(role)
     }
     if (message.content == '$shadow') {
         let myRole = message.guild.roles.get("515653899839864843");
