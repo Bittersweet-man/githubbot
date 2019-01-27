@@ -29,6 +29,7 @@ class JoinChannelCommand extends commando.Command {
     }
 
     async run(message, args) {
+        const video3 = await youtube.searchVideos(args);
         if (message.member.voiceChannel) {
             if (!message.guild.voiceConnection) {
                 if (!servers[message.guild.id]) {
@@ -41,7 +42,7 @@ class JoinChannelCommand extends commando.Command {
                         var server = servers[message.guild.id];
                         message.react("👍");
   
-                        server.queue.push(args);
+                        server.queue.push(video3.url);
                         Play(connection, message);
                     })
             }
