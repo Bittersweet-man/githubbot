@@ -1,5 +1,7 @@
 const commando = require('discord.js-commando');
 const YTDL = require('ytdl-core');
+const YouTube = require("discord-youtube-api"); 
+const youtube = new YouTube("AIzaSyA1K-AoOn0lV5lh9f16vbC5ikFhNWGlBbw");
 
 function Play(connection, message) {
     var server = servers[message.guild.id];
@@ -36,9 +38,15 @@ class JoinChannelCommand extends commando.Command {
                 }
                 message.member.voiceChannel.join()
                     .then(connection => {
+                        if(!args){
+                            message.channel.send("Please supply a video you want!")
+                            return;
+                        }
+                        const video3 = await youtube.searchVideos(args);
+                
                         var server = servers[message.guild.id];
                         message.react("👍");
-                        server.queue.push(args);
+                        server.queue.push(video3);
                         Play(connection, message);
                     })
             }
