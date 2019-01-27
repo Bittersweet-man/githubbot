@@ -9,13 +9,11 @@ const bot = new Commando.Client({
 
 })
 const discord = require('discord.js')
-const dl = require('discord-leveling');
 
 //bot.registry.registerGroup('simple', 'Simple');
 bot.registry.registerGroup('music', 'Music');
 bot.registry.registerGroup('admin', 'Admin');
 bot.registry.registerGroup('animals', 'Animals');
-bot.registry.registerGroup('levels', 'Levels');
 
 bot.registry.registerGroup('simple', 'Simple');
 bot.registry.registerDefaults();
