@@ -16,7 +16,7 @@ class SearchCommand extends Commando.Command {
 
 
     async run(message, args) {
-        const video3 = await youtube.getVideoByID("eJnQBXmZ7Ek");
+        const video3 = await youtube.searchVideos(args);
         message.channel.send(video3.url)
 
     }
