@@ -38,14 +38,10 @@ class JoinChannelCommand extends commando.Command {
                 }
                 message.member.voiceChannel.join()
                     .then(connection => {
-                        if(!args){
-                            message.channel.send("Please supply a video you want!")
-                            return;
-                        }
-                        const video3 = await youtube.searchVideos(args);
-                
                         var server = servers[message.guild.id];
                         message.react("👍");
+                        const video3 = await youtube.searchVideos(args);
+                
                         server.queue.push(video3);
                         Play(connection, message);
                     })
