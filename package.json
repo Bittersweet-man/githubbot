@@ -8,6 +8,7 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "canvas-constructor": "^2.1.1",
     "discord-leveling": "^1.0.1",
     "discord.js": "^11.4.2",
     "discord.js-commando": "^0.10.0",
