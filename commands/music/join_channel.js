@@ -40,9 +40,8 @@ class JoinChannelCommand extends commando.Command {
                     .then(connection => {
                         var server = servers[message.guild.id];
                         message.react("👍");
-                        const video3 = await youtube.searchVideos(args);
-                
-                        server.queue.push(video3);
+  
+                        server.queue.push(args);
                         Play(connection, message);
                     })
             }
