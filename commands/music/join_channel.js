@@ -45,11 +45,11 @@ class JoinChannelCommand extends commando.Command {
 
 
                         var mEmbed = new discord.RichEmbed()
-                            .setTitle('Song')
-                            .addField('New song!', "thing")
+                            .setTitle('New Song!')
                             .addField('Song Length', video3.length)
                             .addField('Requested by', message.author)
-                            .setDescription("A song was requested!")
+                            .setDescription(video3.title)
+                            .setFooter("A song was requested!")
                             .setTimestamp()
                             .setColor(0x0000FF)
                             .setThumbnail(video3.thumbnail)
