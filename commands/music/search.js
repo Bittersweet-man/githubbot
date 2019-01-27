@@ -22,6 +22,7 @@ var videos = await youtube.searchVideos(url, 1)
 var video2 = await youtube.getVideoByID(videos[0].id)
 message.channel.send(video2)
             } catch (error) {
+                console.log(error)
 return message.channel.send("there was an oopsie")
             }
         }
