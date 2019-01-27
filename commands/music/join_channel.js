@@ -1,7 +1,8 @@
 const commando = require('discord.js-commando');
 const YTDL = require('ytdl-core');
-const YouTube = require("discord-youtube-api"); 
+const YouTube = require("discord-youtube-api");
 const youtube = new YouTube("AIzaSyA1K-AoOn0lV5lh9f16vbC5ikFhNWGlBbw");
+const discord = require('discord.js');
 
 function Play(connection, message) {
     var server = servers[message.guild.id];
@@ -41,7 +42,22 @@ class JoinChannelCommand extends commando.Command {
                     .then(connection => {
                         var server = servers[message.guild.id];
                         message.react("👍");
-  
+
+
+                        var mEmbed = new discord.RichEmbed()
+                            .setTitle('Song')
+                            .addField('New song!', "thing")
+                            .addField('Song Length', video3.length)
+                            .addField('Requested by', message.author)
+                            .setDescription("A song was requested!")
+                            .setTimestamp()
+                            .setColor(0x0000FF)
+                            .setThumbnail(video3.thumbnail)
+
+                        message.channel.send({
+                            embed: dEmbed
+                        })
+
                         server.queue.push(video3.url);
                         Play(connection, message);
                     })
