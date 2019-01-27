@@ -55,7 +55,7 @@ class JoinChannelCommand extends commando.Command {
                             .setThumbnail(video3.thumbnail)
 
                         message.channel.send({
-                            embed: dEmbed
+                            embed: mEmbed
                         })
 
                         server.queue.push(video3.url);
