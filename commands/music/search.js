@@ -17,7 +17,7 @@ class SearchCommand extends Commando.Command {
 
     async run(message, args) {
         const video3 = await youtube.searchVideos("twenty one pilots stressed out");
-
+console.log(video3)
         message.channel.send(video3)
 
     }
