@@ -51,7 +51,7 @@ class JoinChannelCommand extends commando.Command {
                             .setDescription(video3.title)
                             .setFooter("A song was requested!")
                             .setTimestamp()
-                            .setColor(0x0000FF)
+                            .setColor(0xff0000)
                             .setThumbnail(video3.thumbnail)
 
                         message.channel.send({
