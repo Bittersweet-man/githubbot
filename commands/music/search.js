@@ -1,6 +1,6 @@
 const YouTube = require('simple-youtube-api')
 const Commando = require('discord.js-commando');
-const youtube = new YouTube(AIzaSyBPn0OXaz3_e0VaKs - ZGHEJ5eP15 - GrVoE);
+const youtube = new YouTube('AIzaSyBPn0OXaz3_e0VaKs - ZGHEJ5eP15 - GrVoE');
 class SearchCommand extends Commando.Command {
     constructor(client, ) {
         super(client, {
