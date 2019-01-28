@@ -33,7 +33,7 @@ class JoinChannelCommand extends commando.Command {
 
     async run(message, args) {
         const video3 = await youtube.searchVideos(args);
-        const channel = await youtube2.getChannel('https://www.youtube.com/channel/UC477Kvszl9JivqOxN1dFgPQ')
+        const channel = await youtube2.getChannel(video3)
         if (message.member.voiceChannel) {
             if (!message.guild.voiceConnection) {
                 if (!servers[message.guild.id]) {
