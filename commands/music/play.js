@@ -23,7 +23,7 @@ class PlayCommand extends Commando.Command
         if (!validate) return message.channel.send("That's not a valid url!")
         let info = await ytdl.getInfo(args)
         let connection = await message.member.voiceChannel.join()
-        let dispatcher = await connection.play(ytdl(args), { filter: 'audioonly' });
+        let dispatcher = await connection.play(ytdl(args, { filter: 'audioonly' }));
         message.channel.send(`Now playing: ${info.title}`);
     }
 }
