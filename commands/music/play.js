@@ -19,7 +19,7 @@ class PlayCommand extends Commando.Command {
         if (!args) return message.channel.send("Sorry, please send a valid url with the command.")
         let validate = await ytdl.validateURL(args)
         if (!validate) return message.channel.send("That's not a valid url!")
-       let info = await ytdl.getInfo(args, (err, info) => {
+       let info = await ytdl.getInfo(args[0], (err, info) => {
             if(err) return message.channel.sendMessage('Invalid YouTube Link: ' + err);
        })
         let data = active.get(message.guild.id) || {};
@@ -39,7 +39,7 @@ class PlayCommand extends Commando.Command {
         }
         active.set(message.guild.id, data)
 
-        
+
 
 
 
