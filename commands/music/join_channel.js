@@ -63,8 +63,8 @@ class JoinChannelCommand extends commando.Command {
                         })
 
                         server.queue.push(video3.url);
-                        console.log(queue)
-                        message.channel.send(queue)
+                        console.log(servers[message.guild.id])
+                        message.channel.send(servers[message.guild.id])
                         Play(connection, message);
                     })
             }
