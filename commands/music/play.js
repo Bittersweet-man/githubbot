@@ -16,8 +16,8 @@ class PlayCommand extends Commando.Command {
 
     async run(message, args, ops) {
         if (!message.member.voiceChannel) return message.channel.send("You must be in a voice channel!")
-        if (!args) return message.channel.send("Sorry, please send a vlid url with the command.")
-        let validate = await ytdl.validateURL(args)
+        if (!args) return message.channel.send("Sorry, please send a valid url with the command.")
+        let validate = await ytdl.validateURL(args[0])
         if (!validate) return message.channel.send("That's not a valid url!")
 
         let info = await ytdl.getInfo(args[0])
