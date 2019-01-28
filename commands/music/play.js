@@ -20,7 +20,7 @@ class PlayCommand extends Commando.Command {
         let validate = await ytdl.validateURL(args)
         if (!validate) return message.channel.send("That's not a valid url!")
 
-        let info = await ytdl.getInfo(args)
+        let info = await ytdl.getInfo(args[0])
         let data = ops.active.get(message.guild.id) || {};
         if (!data.connection) data.connection = await message.member.voiceChannel.join()
         if (!data.queue) data.queue = [];
