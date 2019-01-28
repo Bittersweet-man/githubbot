@@ -63,6 +63,7 @@ class JoinChannelCommand extends commando.Command {
                         })
 
                         server.queue.push(video3.url);
+                        console.log(queue)
                         Play(connection, message);
                     })
             }
