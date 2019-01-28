@@ -28,7 +28,7 @@ class PlayCommand extends Commando.Command {
         data.queue.push({
             songTitle: info.title,
             requester: message.author.tag,
-            url: args,
+            url: args[0],
             announceChannel: message.channel.id
         });
 
