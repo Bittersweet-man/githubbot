@@ -31,7 +31,7 @@ class JoinChannelCommand extends commando.Command {
 
     async run(message, args) {
         const video3 = await youtube.searchVideos(args);
-        const channel = await youtube.getChannel('https://www.youtube.com/user/twentyonepilots')
+        const channel = await youtube.getChannel('https://www.youtube.com/channel/UC477Kvszl9JivqOxN1dFgPQ')
         if (message.member.voiceChannel) {
             if (!message.guild.voiceConnection) {
                 if (!servers[message.guild.id]) {
@@ -49,7 +49,7 @@ class JoinChannelCommand extends commando.Command {
                             .setTitle('New Song!')
                             .addField('Song Length', video3.length)
                             .addField('Requested by', message.author)
-                            .addField("Channel", channel)
+                            .addField("Channel", channel.title)
                             .setDescription(video3.title)
                             .setFooter("A song was requested!")
                             .setURL(video3.url)
