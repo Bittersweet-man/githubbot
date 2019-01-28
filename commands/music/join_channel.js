@@ -35,6 +35,7 @@ class JoinChannelCommand extends commando.Command {
         const video3 = await youtube.searchVideos(args);
         //const channel = await youtube2.getChannel(video3)
         if (message.member.voiceChannel) {
+            if (!message.guild.voiceConnection) {
                 if (!servers[message.guild.id]) {
                     servers[message.guild.id] = {
                         queue: []
@@ -62,11 +63,9 @@ class JoinChannelCommand extends commando.Command {
                         })
 
                         server.queue.push(video3.url);
-                        console.log(server)
-                        message.channel.send(server)
                         Play(connection, message);
                     })
-            
+            }
         } else {
             message.reply("You must be in a Voice Channel to summon me!");
         }
