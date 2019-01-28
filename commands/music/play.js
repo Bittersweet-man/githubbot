@@ -17,7 +17,7 @@ class PlayCommand extends Commando.Command {
     async run(message, args) {
         if (!message.member.voiceChannel) return message.channel.send("You must be in a voice channel!")
         if (!args) return message.channel.send("Sorry, please send a valid url with the command.")
-       let info = await ytdl.getInfo(args[0], (err, info) => {
+       let info = await ytdl.getInfo(args, (err, info) => {
             if(err) return message.channel.sendMessage('Invalid YouTube Link: ' + err);
        })
         let data = active.get(message.guild.id) || {};
