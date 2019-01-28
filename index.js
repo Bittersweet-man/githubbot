@@ -1,7 +1,7 @@
 
 const Commando = require('discord.js-commando');
 const fs = require('fs')
-const active = new Map();
+global.active = new Map();
 const TOKEN = process.env.TOKEN;
 const bot = new Commando.Client({
     commandPrefix: "?",
@@ -10,9 +10,7 @@ const bot = new Commando.Client({
 
 })
 const discord = require('discord.js')
-let ops = {
-    active: active
-}
+
 //bot.registry.registerGroup('simple', 'Simple');
 bot.registry.registerGroup('music', 'Music');
 bot.registry.registerGroup('admin', 'Admin');
