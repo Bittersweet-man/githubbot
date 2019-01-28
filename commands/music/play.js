@@ -19,7 +19,7 @@ class PlayCommand extends Commando.Command {
         if (!args) return message.channel.send("Sorry, please send a valid url with the command.")
         let validate = await ytdl.validateURL(args)
         if (!validate) return message.channel.send("That's not a valid url!")
-       let info = await yt.getInfo(args, (err, info) => {
+       let info = await ytdl.getInfo(args, (err, info) => {
             if(err) return msg.channel.sendMessage('Invalid YouTube Link: ' + err);
        })
         let data = ops.active.get(message.guild.id) || {};
@@ -51,12 +51,12 @@ class PlayCommand extends Commando.Command {
             }));
             data.dispatcher.guildID = data.guildID
 
-            data.dispatcher.once('finish', function () {
-                finish(this, ops, bot)
+            data.dispatcher.once('end', function () {
+                end(this, ops, bot)
             })
         }
 
-        function finish(bot, dispatcher, ops) {
+        function end(bot, dispatcher, ops) {
             let fetched = ops.active.get(dispatcher.guildID)
             fetched.queue.shift();
             if (fetched.queue.length > 0) {
