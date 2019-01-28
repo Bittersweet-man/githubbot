@@ -17,15 +17,15 @@ class PlayCommand extends Commando.Command {
     async run(message, args) {
         if (!message.member.voiceChannel) return message.channel.send("You must be in a voice channel!")
         if (!args) return message.channel.send("Sorry, please send a valid url with the command.")
-       let info = await ytdl.getInfo(args, (err, info) => {
-            if(err) return message.channel.sendMessage('Invalid YouTube Link: ' + err);
-       })
+        let info = await ytdl.getInfo(args, (err, info) => {
+            if (err) return message.channel.sendMessage('Invalid YouTube Link: ' + err);
+        })
         let data = active.get(message.guild.id) || {};
         if (!data.connection) data.connection = await message.member.voiceChannel.join()
         if (!data.queue) data.queue = [];
         data.guildID = message.guild.id;
         data.queue.push({
-            //songTitle: info.title,
+            songTitle: info.title,
             requester: message.author.tag,
             url: args,
             announceChannel: message.channel.id
