@@ -27,13 +27,14 @@ class PlayCommand extends Commando.Command {
         data.queue.push({
             songTitle: info.title,
             requester: message.author.tag,
-            url: args[0],
+            url: args,
             announceChannel: message.channel.id
         });
 
         if (!data.dispatcher) play(bot, data);
         else {
-            message.channel.send(`Added to queue: ${info.title} | Requested By: ${message.author.id}`)
+            message.channel.send(`Added to queue: song | Requested By: ${message.author.id}`)
+            //replace "here" with ${info.title}
         }
         active.set(message.guild.id, data)
 
