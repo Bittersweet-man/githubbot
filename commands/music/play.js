@@ -19,8 +19,9 @@ class PlayCommand extends Commando.Command {
         if (!args) return message.channel.send("Sorry, please send a valid url with the command.")
         let validate = await ytdl.validateURL(args)
         if (!validate) return message.channel.send("That's not a valid url!")
-
-        let info = await ytdl.getInfo(args[0])
+       let info = await yt.getInfo(args, (err, info) => {
+            if(err) return msg.channel.sendMessage('Invalid YouTube Link: ' + err);
+       })
         let data = ops.active.get(message.guild.id) || {};
         if (!data.connection) data.connection = await message.member.voiceChannel.join()
         if (!data.queue) data.queue = [];
