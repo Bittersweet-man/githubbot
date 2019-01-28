@@ -25,7 +25,7 @@ class PlayCommand extends Commando.Command {
         if (!data.queue) data.queue = [];
         data.guildID = message.guild.id;
         data.queue.push({
-            songTitle: info.title,
+            //songTitle: info.title,
             requester: message.author.tag,
             url: args,
             announceChannel: message.channel.id
