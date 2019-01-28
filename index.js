@@ -10,7 +10,9 @@ const bot = new Commando.Client({
 
 })
 const discord = require('discord.js')
-
+let ops = {
+    active: active
+}
 //bot.registry.registerGroup('simple', 'Simple');
 bot.registry.registerGroup('music', 'Music');
 bot.registry.registerGroup('admin', 'Admin');
