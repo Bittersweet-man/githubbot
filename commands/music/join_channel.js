@@ -1,7 +1,7 @@
 const commando = require('discord.js-commando');
 const YTDL = require('ytdl-core');
-const YouTube = require("discord-youtube-api");
-const youtube = new YouTube("AIzaSyAeDBN6qcUJbKOh957Iut8gQQ-a-6AL-GA");
+const YouTube = require("discord-youtube-api"); 
+const youtube = new YouTube("AIzaSyBaOogg5vrTJtS2SLoYgiI9qFxL5kar3O8");
 const discord = require('discord.js');
 
 function Play(connection, message) {
@@ -30,7 +30,7 @@ class JoinChannelCommand extends commando.Command {
     }
 
     async run(message, args) {
-        //const video3 = await youtube.searchVideos(args);
+        const video3 = await youtube.searchVideos(args);
         //const channel = await youtube2.getChannel(video3)
         if (message.member.voiceChannel) {
             if (!message.guild.voiceConnection) {
@@ -45,22 +45,22 @@ class JoinChannelCommand extends commando.Command {
                         message.react("👍");
 
 
-                        //var mEmbed = new discord.RichEmbed()
-                          //  .setTitle('New Song!')
-                            //.addField('Song Length', video3.length)
-                            //.addField('Requested by', message.author)
-                            //.setDescription(video3.title)
-                            //.setFooter("A song was requested!")
-                            //.setURL(video3.url)
-                            //.setTimestamp()
-                            //.setColor(0xff0000)
-                            //.setThumbnail(video3.thumbnail)
+                        var mEmbed = new discord.RichEmbed()
+                          .setTitle('New Song!')
+                        .addField('Song Length', video3.length)
+                        .addField('Requested by', message.author)
+                        .setDescription(video3.title)
+                        .setFooter("A song was requested!")
+                        .setURL(video3.url)
+                        .setTimestamp()
+                        .setColor(0xff0000)
+                        .setThumbnail(video3.thumbnail)
 
-                       // message.channel.send({
-                           // embed: mEmbed
-                       // })
+                       message.channel.send({
+                        embed: mEmbed
+                        })
 
-                        server.queue.push(args);
+                        server.queue.push(video3.url);
                         Play(connection, message);
                     })
             }
