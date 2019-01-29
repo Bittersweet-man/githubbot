@@ -21,8 +21,22 @@ class SearchCommand extends Commando.Command {
             return;
         }
         const video3 = await youtube.searchVideos(args);
-        console.log(video3)
-        message.channel.send(video3.url)
+
+        var mEmbed = new discord.RichEmbed()
+        .setTitle('Song Result')
+      .addField('Song Length', video3.length)
+      .addField('Requested by', message.author)
+      .setDescription(video3.title)
+      .setFooter(video3.url)
+      .setURL(video3.url)
+      .setTimestamp()
+      .setColor(0xff0000)
+      .setThumbnail(video3.thumbnail)
+
+     message.channel.send({
+      embed: mEmbed
+      })
+
 
     }
 }
