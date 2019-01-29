@@ -1,7 +1,7 @@
 
 const Commando = require('discord.js-commando');
 const YouTube = require("discord-youtube-api"); 
-const youtube = new YouTube("AIzaSyA1K-AoOn0lV5lh9f16vbC5ikFhNWGlBbw");
+const youtube = new YouTube("AIzaSyAeDBN6qcUJbKOh957Iut8gQQ-a-6AL-GA");
 
 
 class SearchCommand extends Commando.Command {
@@ -20,7 +20,8 @@ class SearchCommand extends Commando.Command {
             message.channel.send("Please supply a video you want!")
             return;
         }
-        const video3 = await youtube.searchVideos(args);
+        const video3 = await youtube.searchVideos("big poppa biggie smalls");
+        console.log(video3)
         message.channel.send(video3.url)
 
     }

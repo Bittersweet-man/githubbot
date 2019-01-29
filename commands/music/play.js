@@ -45,7 +45,9 @@ class PlayCommand extends Commando.Command {
 
 
         async function play(data, bot) {
-            bot.channels.get(data.queue[0].announceChannel).send(`Now Playing: ${data.queue[0].songTitle} | Requested By: ${data.queue[0].requester}`)
+            var bot = new discord.Client()
+           var channel = bot.channels.get('538707114781179904')
+           channel.send(`Now Playing: ${data.queue[0].songTitle} | Requested By: ${data.queue[0].requester}`)
             data.dispatcher = await data.connection.playStream(ytdl(data.queue[0].url, {
                 filter: 'audioonly'
             }));
