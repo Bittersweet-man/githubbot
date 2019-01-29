@@ -2,6 +2,7 @@
 const Commando = require('discord.js-commando');
 const YouTube = require("discord-youtube-api"); 
 const youtube = new YouTube("AIzaSyBaOogg5vrTJtS2SLoYgiI9qFxL5kar3O8");
+const discord = require('discord.js')
 
 
 class SearchCommand extends Commando.Command {
