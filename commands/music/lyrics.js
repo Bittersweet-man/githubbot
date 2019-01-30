@@ -23,9 +23,10 @@ class LyricsCommand extends Commando.Command {
             message.channel.send('Please specify an artist!')
             return;
         } else {
-            const song = await lyricist.song(args, {
+            const song = await lyricist.song(714198, {
                 fetchLyrics: true
-            }).then(song => message.channel.send(song.lyrics));
+            }).then(song => message.channel.send(song.title
+                ));
 
 
 
