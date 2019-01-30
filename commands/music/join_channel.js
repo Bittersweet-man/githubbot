@@ -1,6 +1,6 @@
 const commando = require('discord.js-commando');
 const YTDL = require('ytdl-core');
-const YouTube = require("discord-youtube-api");
+const YouTube = require("discord-youtube-api"); 
 const youtube = new YouTube("AIzaSyBaOogg5vrTJtS2SLoYgiI9qFxL5kar3O8");
 const discord = require('discord.js');
 
@@ -42,32 +42,28 @@ class JoinChannelCommand extends commando.Command {
                 message.member.voiceChannel.join()
                     .then(connection => {
                         var server = servers[message.guild.id];
-                        message.react("👍");
-
-
                         var mEmbed = new discord.RichEmbed()
-                            .setTitle('New Song!')
-                            .addField('Song Length', video3.length)
-                            .addField('Requested by', message.author)
-                            .setDescription(video3.title)
-                            .setFooter("A song was requested!")
-                            .setURL(video3.url)
-                            .setTimestamp()
-                            .setColor(0xff0000)
-                            .setThumbnail(video3.thumbnail)
+                          .setTitle('New Song!')
+                        .addField('Song Length', video3.length)
+                        .addField('Requested by', message.author)
+                        .setDescription(video3.title)
+                        .setFooter("A song was requested!")
+                        .setURL(video3.url)
+                        .setTimestamp()
+                        .setColor(0xff0000)
+                        .setThumbnail(video3.thumbnail)
 
-                        message.channel.send({
-                            embed: mEmbed
+                       message.channel.send({
+                        embed: mEmbed
                         })
 
-                        server.queue.push(video3.url).then(console.log(server.queue))
+                        server.queue.push(video3.url)
+                        consolde.log(server.queue)
                         Play(connection, message);
                     })
-
-
-            } else {
-                message.reply("You must be in a Voice Channel to summon me!");
             }
+        } else {
+            message.reply("You must be in a Voice Channel to summon me!");
         }
     }
 }
