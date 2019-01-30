@@ -77,7 +77,6 @@ bot.on("guildMemberRemove", function (member) {
 
 
 bot.on('message', function (message) {
-
   if(message.content == "reboot"){
     if (!message.member.hasPermission("ADMINISTRATOR")) {
         message.channel.send("You don't have permissions to use this command!");
