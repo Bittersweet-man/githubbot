@@ -42,6 +42,9 @@ class JoinChannelCommand extends commando.Command {
                 message.member.voiceChannel.join()
                     .then(connection => {
                         var server = servers[message.guild.id];
+                        message.react("👍");
+
+
                         var mEmbed = new discord.RichEmbed()
                           .setTitle('New Song!')
                         .addField('Song Length', video3.length)
@@ -57,8 +60,7 @@ class JoinChannelCommand extends commando.Command {
                         embed: mEmbed
                         })
 
-                        server.queue.push(video3.url)
-                        consolde.log(server.queue)
+                        server.queue.push(video3.url);
                         Play(connection, message);
                     })
             }
