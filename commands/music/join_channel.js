@@ -33,37 +33,41 @@ class JoinChannelCommand extends commando.Command {
         const video3 = await youtube.searchVideos(args);
         //const channel = await youtube2.getChannel(video3)
         if (message.member.voiceChannel) {
-
-            if (!servers[message.guild.id]) {
-                servers[message.guild.id] = {
-                    queue: []
+            if (!message.guild.voiceConnection) {
+                if (!servers[message.guild.id]) {
+                    servers[message.guild.id] = {
+                        queue: []
+                    }
                 }
-            }
-            message.member.voiceChannel.join()
-                .then(connection => {
-                    var server = servers[message.guild.id];
-                    var mEmbed = new discord.RichEmbed()
-                        .setTitle('New Song!')
-                        .addField('Song Length', video3.length)
-                        .addField('Requested by', message.author)
-                        .setDescription(video3.title)
-                        .setFooter("A song was requested!")
-                        .setURL(video3.url)
-                        .setTimestamp()
-                        .setColor(0xff0000)
-                        .setThumbnail(video3.thumbnail)
+                message.member.voiceChannel.join()
+                    .then(connection => {
+                        var server = servers[message.guild.id];
+                        message.react("👍");
 
-                    message.channel.send({
-                        embed: mEmbed
+
+                        var mEmbed = new discord.RichEmbed()
+                            .setTitle('New Song!')
+                            .addField('Song Length', video3.length)
+                            .addField('Requested by', message.author)
+                            .setDescription(video3.title)
+                            .setFooter("A song was requested!")
+                            .setURL(video3.url)
+                            .setTimestamp()
+                            .setColor(0xff0000)
+                            .setThumbnail(video3.thumbnail)
+
+                        message.channel.send({
+                            embed: mEmbed
+                        })
+
+                        server.queue.push(video3.url).then(console.log(server.queue))
+                        Play(connection, message);
                     })
 
-                    server.queue.push(video3.url).then(console.log(server.queue))
-                    Play(connection, message);
-                })
 
-
-        } else {
-            message.reply("You must be in a Voice Channel to summon me!");
+            } else {
+                message.reply("You must be in a Voice Channel to summon me!");
+            }
         }
     }
 }
