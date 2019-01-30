@@ -1,8 +1,11 @@
 const Commando = require('discord.js-commando');
 const Discord = require('discord.js');
 const bot = new Commando.Client()
+const Lyricist = require('lyricist/node6');
+const lyricist = new Lyricist("rK5imylYL1MBHO3pHSahEhdxuPxI7C0Fg3fC-Ms992mbjtpZq3tI3_AJFkzWrO98");
 const filter = m => m.content.startsWith('');
-var lyr = require('lyrics-fetcher');
+
+
 
 class LyricsCommand extends Commando.Command {
     constructor(client, ) {
@@ -20,47 +23,13 @@ class LyricsCommand extends Commando.Command {
             message.channel.send('Please specify an artist!')
             return;
         } else {
+            const song = await lyricist.song(args, {
+                fetchLyrics: true
+            }).then(song => message.channel.send(song.lyrics));
 
 
 
-
-
-            const msgs = await message.channel.awaitMessages(filter, {
-                    max: 1
-                })
-                .then(async collected => {
-                    var response = collected.array()[0];
-                    var song = response.content
-                    setTimeout(function () {
-                        lyr.fetch(args, song, function (err, lyrics) {
-                            if (lyrics.length > 2000) {
-                                var lyrics = lyrics.substring(0, 2000);
-                                let words = lyrics.split(2000);
-                                message.channel.send('```' + words + '```')
-                            } {
-                                if (lyrics.length < 2000) {
-                                    message.channel.send('```' + lyrics + '```');
-                                }
-                            } {
-                                if (lyrics.length > 2000) {
-                                    var lyrics2 = lyrics.slice(-1000);
-                                    message.channel.send('```' + lyrics2 + '```')
-
-                                }
-                            }
-
-                        });
-                    }, 5000);
-
-
-
-
-
-
-
-                })
         }
-
     }
 }
 

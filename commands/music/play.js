@@ -1,19 +1,10 @@
 const Commando = require('discord.js-commando');
-const ytdl = require('ytdl-core')
+const YTDL = require('ytdl-core')
 const discord = require('discord.js')
 const bot = new discord.Client()
 
 
-function play (connection, message){
-    var server = servers[message.guild.id]
-    server.dispatcher = connection.playStream(ytdl(server.queue[0], {filter: "audioonly"}))
 
-    server.queue.shift();
-server.dispatcher.on('end', function() {
-    if(server.queue[0]) play(connection, message)
-    else connection.disconnect
-})
-}
 
 class PlayCommand extends Commando.Command {
     constructor(client, ) {
@@ -39,9 +30,22 @@ return
         if(!servers[message.guild.id]) servers[message.guild.id] = {
             queue: []
         }
+        function Play (connection, message){
+            var server = servers[message.guild.id]
+            server.dipatcher = connection.playStream(YTDL(server.queue[0], {
+                filter: "audioonly"
+            }));
+        
+            server.queue.shift();
+            server.dipatcher.on("end", function () {
+            if(server.queue[0]) play(connection, message)
+            else connection.disconnect
+        })
+        }
         var server = servers[message.guild.id]
         if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
- play(connection, message);
+            server.queue.push(args)
+            Play(connection, message);
         }
 
         )}
