@@ -25,8 +25,7 @@ class JoinChannelCommand extends commando.Command {
             name: 'join',
             group: 'music',
             memberName: 'join',
-            description: 'Join the voice channel the commander is currently in. Then if u want to play music, you can just copy and paste the link onto the end of the command and it will play your music!'
-        });
+            description: 'Joins the voice channel the commander is currently in. Add whatever song you want to the command, and listen to it!' });
     }
 
     async run(message, args) {
