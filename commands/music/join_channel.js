@@ -1,7 +1,7 @@
 const commando = require('discord.js-commando');
 const YTDL = require('ytdl-core');
 const YouTube = require("discord-youtube-api"); 
-const youtube = new YouTube("AIzaSyBaOogg5vrTJtS2SLoYgiI9qFxL5kar3O8");
+const youtube = new YouTube(process.env.YouTubeAPI);
 const discord = require('discord.js');
 
 function Play(connection, message) {
