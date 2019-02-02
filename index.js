@@ -1,11 +1,10 @@
-
 const Commando = require('discord.js-commando');
 const fs = require('fs')
 global.active = new Map();
 const TOKEN = process.env.TOKEN;
 const bot = new Commando.Client({
     commandPrefix: "?",
-      owner: "413754421365964800",
+    owner: "413754421365964800",
     owner: "462709446121095169"
 
 })
@@ -77,23 +76,23 @@ bot.on("guildMemberRemove", function (member) {
 
 
 bot.on('message', function (message) {
-  if(message.content == "reboot"){
-    if (!message.member.hasPermission("ADMINISTRATOR")) {
-        message.channel.send("You don't have permissions to use this command!");
-        return;
+    if (message.content == "reboot") {
+        if (!message.member.hasPermission("ADMINISTRATOR")) {
+            message.channel.send("You don't have permissions to use this command!");
+            return;
+        }
+        message.channel.send('Resetting...')
+            .then(msg => bot.destroy())
+            .then(() => bot.login(process.env.TOKEN));
     }
-    message.channel.send('Resetting...')
-    .then(msg => bot.destroy())
-    .then(() => bot.login(process.env.TOKEN));
-  }
-  if(message.content == "shutdown"){
-    if (!message.member.hasPermission("ADMINISTRATOR")) {
-        message.channel.send("You don't have permissions to use this command!");
-        return;
+    if (message.content == "shutdown") {
+        if (!message.member.hasPermission("ADMINISTRATOR")) {
+            message.channel.send("You don't have permissions to use this command!");
+            return;
+        }
+        message.channel.send('Shutting down...')
+            .then(msg => bot.destroy())
     }
-    message.channel.send('Shutting down...')
-    .then(msg => bot.destroy())
-  }
     if (message.content.toLowerCase() == "accept") {
         message.reply('You have been accepted to the Sylveon Squad!')
         var role = message.guild.roles.find(role => role.name === "newcomer")
@@ -104,8 +103,19 @@ bot.on('message', function (message) {
         message.member.addRole(myRole)
         message.channel.send('welcome to the shadows')
     }
-    if (message.content.toLowerCase().includes("nigga" || "nigger" || "fag" || "faggot" || "retard" || "dyke" )) {
+    if (message.content.toLowerCase().includes("nigga" || "nigger" || "fag" || "faggot" || "retard" || "dyke")) {
         message.delete();
         message.author.send("Please don't use any slurs! This is just a warning, next time will result in a ban.")
+        var channel = message.guild.channels.find(channel => channel.name === "modlogs")
+        let sEmbed = new discord.RichEmbed()
+            .setTitle('Slur')
+            .addField('A slur was used by', message.author)
+            .addField('Channel', message.channel)
+            .setDescription("Auto detection")
+            .setTimestamp()
+            .setColor(0xFFA500)
+        channel.send({
+            embed: sEmbed
+        })
     }
 })
