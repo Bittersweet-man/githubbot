@@ -104,55 +104,8 @@ bot.on('message', function (message) {
         message.member.addRole(myRole)
         message.channel.send('welcome to the shadows')
     }
-    if (message.content.includes("nigga")) {
+    if (message.content.toLowerCase().includes("nigga" || "nigger" || "fag" || "faggot" || "retard" || "dyke" )) {
         message.delete();
-        message.author.send("Please don't use the word \"Nigga\", or any slurs. This is just a warning, next time will result in a ban.")
+        message.author.send("Please don't use any slurs! This is just a warning, next time will result in a ban.")
     }
-    if (message.content.includes("Nigga")) {
-        message.delete();
-        message.author.send("Please don't use the word \"Nigga\", or any slurs. This is just a warning, next time will result in a ban.")
-    }
-    if (message.content.includes("nigger")) {
-        message.delete();
-        message.author.send("Please don't use the word \"Nigger\", or any slurs. This is just a warning, next time will result in a ban.")
-
-    }
-    if (message.content.includes("Nigger")) {
-        message.delete();
-        message.author.send("Please don't use the word \"Nigger\", or any slurs. This is just a warning, next time will result in a ban.")
-    }
-    if (message.content.includes("Fag")) {
-        message.delete();
-        message.author.send("Please don't use the word \"Fag\", or any slurs. This is just a warning, next time will result in a ban.")
-
-    }
-    if (message.content.includes("fag")) {
-        message.delete();
-        message.author.send("Please don't use the word \"Fag\", or any slurs. This is just a warning, next time will result in a ban.")
-    }
-    if (message.content.includes("faggot")) {
-        message.delete();
-        message.author.send("Please don't use the word \"Faggot\", or any slurs. This is just a warning, next time will result in a ban.")
-    }
-    if (message.content.includes("Faggot")) {
-        message.delete();
-        message.author.send("Please don't use the word \"Faggot\", or any slurs. This is just a warning, next time will result in a ban.")
-    }
-    if (message.content.includes("retard")) {
-        message.delete();
-        message.author.send("Please don't use the word \"Retard\", or any slurs. This is just a warning, next time will result in a ban.")
-    }
-    if (message.content.includes("Retard")) {
-        message.delete();
-        message.author.send("Please don't use the word \"Retard\", or any slurs. This is just a warning, next time will result in a ban.")
-    }
-    if (message.content.includes("dike")) {
-        message.delete();
-        message.author.send("Please don't use the word \"Dike\", or any slurs. This is just a warning, next time will result in a ban.")
-    }
-    if (message.content.includes("Dike")) {
-        message.delete();
-        message.author.send("Please don't use the word \"Dike\", or any slurs. This is just a warning, next time will result in a ban.")
-    }
-
 })
