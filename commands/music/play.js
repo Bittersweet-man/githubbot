@@ -38,7 +38,7 @@ class PlayCommand extends Commando.Command {
             queue: []
         }
         var server = servers[message.guild.id]
-        if (!message.guild.voiceChannel) message.member.voicechannel.join().then(function (connection) {
+        if (!message.guild.voiceChannel) message.member.voiceChannel.join().then(function (connection) {
             play(connection, message)
         })
     }
