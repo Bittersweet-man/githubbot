@@ -3,19 +3,19 @@ const commando = require("discord.js-commando");
 module.exports = class SkipCommand extends commando.Command {
 
     constructor(client) {
-        super(client,
-            {
-                name: 'skip',
-                group: 'music',
-                memberName: 'skip',
-                description: 'Plays music by url or query',
-                examples: ['!skip', '!skip 2']
-            });
+        super(client, {
+            name: 'skip',
+            group: 'music',
+            memberName: 'skip',
+            description: 'Plays music by url or query',
+            examples: ['!skip', '!skip 2']
+        });
     }
 
     async run(message, args) {
         // Get server from collection
         let server = servers.get(message.guild.id);
+
 
         if (server == null) {
             message.reply("Can't skip a song if there's nothing in the queue");
@@ -32,8 +32,12 @@ module.exports = class SkipCommand extends commando.Command {
         if (splitted.length <= 1) {
             server.dispatcher.end();
         } else {
-            try {
-                let number = parseInt(splitted[1]);
+            let number = parseInt(splitted[1]);
+            if (isNaN(number)) {
+                message.reply("param not a number, skipping one song")
+                server.dispatcher.end();
+            } else {
+
 
                 if (number > server.queue.length) {
                     number = server.queue.length;
@@ -47,10 +51,8 @@ module.exports = class SkipCommand extends commando.Command {
 
                 server.dispatcher.end();
                 message.reply(`Skipped ${number} songs`);
-            } catch {
-                message.reply("param not a number, skipping one song")
-                server.dispatcher.end();
             }
+
         }
     }
 }
