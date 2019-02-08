@@ -1,7 +1,6 @@
 const Commando = require('discord.js-commando');
 const fs = require('fs')
-global.active = new Map();
-const TOKEN = process.env.TOKEN;
+
 const bot = new Commando.Client({
     commandPrefix: "?",
     owner: "413754421365964800",
@@ -9,6 +8,9 @@ const bot = new Commando.Client({
 
 })
 const discord = require('discord.js')
+const config = require("./config.json");
+global.servers = new discord.Collection();
+const TOKEN = process.env.TOKEN;
 
 //bot.registry.registerGroup('simple', 'Simple');
 bot.registry.registerGroup('music', 'Music');
@@ -21,9 +23,9 @@ bot.registry.registerCommandsIn(__dirname + '/commands');
 
 bot.login(TOKEN);
 
-global.servers = {};
-var playQueue = [];
 
+var playQueue = [];
+global.servers = new discord.Collection();
 bot.on('ready', () => {
     console.log("Ready");
     const channel = bot.channels.get('538707114781179904')
