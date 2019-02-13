@@ -70,7 +70,9 @@ module.exports = class PlayCommand extends commando.Command {
                 })
                 .catch(console.error);
         }
-
+let video = await api.searchVideos(args)
+let title = video.title
+console.log(title)
         // Push url to queue
         server.queue.push(url);
 
