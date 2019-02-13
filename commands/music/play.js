@@ -71,7 +71,7 @@ module.exports = class PlayCommand extends commando.Command {
                 .catch(console.error);
         }
         const api = new YouTube(process.env.YouTubeAPI);
-        let video = await api.searchVideos(args)
+        let video = await api.searchVideos(splitted.join(" "), 5)
         let title = video.title
         console.log(title)
         // Push url to queue
