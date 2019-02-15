@@ -31,14 +31,17 @@ class XPCommand extends Commando.Command {
             .addField("Level", curLvl, true)
             .addField("XP", curXp, true)
             .setFooter(`${difference} XP until level up`, message.author.displayAvatarURL)
-            message.channel.send({ embed : levelEmbed})
+        message.channel.send({
+            embed: levelEmbed
+        })
         //message.channel.send(`You are level ${curLvl} and have ${curXp} experience.`)
-        xp[message.author.id].xp = xp[message.author.id].xp + 1
+        xp[message.author.id].xp = xp[message.author.id].xp + 200
         fs.writeFile("../xp.json", JSON.stringify(xp), (err) => {
             if (err) {
                 console.log(err);
             }
         })
+        //{ Error: EROFS: read-only file system, open '../xp.json' errno: -30, code: 'EROFS', syscall: 'open', path: '../xp.json' }
     }
 
 }
