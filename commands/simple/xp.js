@@ -23,6 +23,7 @@ class XPCommand extends Commando.Command {
         let curXp = xp[message.author.id].xp;
         let curLvl = xp[message.author.id].level;
         message.channel.send(`You are level ${curLvl} and have ${curXp} experience.`)
+        xp[message.author.id].xp = xp[message.author.id].xp + 1
         fs.writeFile("../xp.json", JSON.stringify(xp), (err) => {
             if (err) {
                 console.log(err);
