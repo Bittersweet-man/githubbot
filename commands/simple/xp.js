@@ -22,7 +22,16 @@ class XPCommand extends Commando.Command {
         }
         let curXp = xp[message.author.id].xp;
         let curLvl = xp[message.author.id].level;
-        message.channel.send(`You are level ${curLvl} and have ${curXp} experience.`)
+        let nxtLvlXp = (curLvl * 200) * 1.2;
+        let difference = nxtLvlXp - curXp;
+        let levelEmbed = new discord.RichEmbed()
+            .setTitle(message.author.username)
+            .setColor("#ff00ff")
+            .addField("Level", curLvl, true)
+            .addField("XP", curXp, true)
+            .setFooter(`${difference} XP until level up`, message.author.displayAvatarURL)
+            message.channel.send({ embed : levelEmbed})
+        //message.channel.send(`You are level ${curLvl} and have ${curXp} experience.`)
         xp[message.author.id].xp = xp[message.author.id].xp + 1
         fs.writeFile("../xp.json", JSON.stringify(xp), (err) => {
             if (err) {
