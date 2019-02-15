@@ -1,5 +1,6 @@
 const xp = require("../../xp.json")
 const Commando = require('discord.js-commando');
+const discord = require("discord.js")
 let fs = require("fs")
 
 class XPCommand extends Commando.Command {
